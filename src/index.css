@@ -22,3 +22,20 @@ code {
 .nav-link{
   color: rgb(136, 113, 113) !important;
 }
+
+h1{
+  font-size: 20px !important;
+}
+
+.flex-container{
+  display: flex !important;
+}
+.btn{
+  background-color: rgb(243, 126, 17) !important;
+  color: white !important;
+}
+
+select{
+  box-shadow: none !important;;
+  border-color: black !important;
+}
