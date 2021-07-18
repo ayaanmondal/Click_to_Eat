@@ -6,6 +6,11 @@ const db = require("./db.js")
 app.use(express.json());
 // db connection
 
+
+const foodsRoute = require('./routes/foodsRoute')
+
+app.use('/api/foods', foodsRoute)
+
 app.get("/", (req, res) => {
   res.send("Server Started ");
 });
