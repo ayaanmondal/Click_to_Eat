@@ -65,7 +65,7 @@ export default function Food({ food }) {
         </div>
       </div>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal className="row justify-content-center" show={show} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title>{food.name}</Modal.Title>
           <button onClick={handleClose}>X</button>

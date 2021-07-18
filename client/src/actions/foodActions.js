@@ -6,7 +6,7 @@ export const getAllfoods=()=> async dispatch=>{
 
     try {
         const response = await axios.get('/api/foods/getallfoods')
-        console.log(response.data);
+        //console.log(response.data);
         dispatch({type: 'GET_FOODS_SUCCESS', payload : response.data})
     } catch (error) {
         dispatch({type: 'GET_FOODS_FAILED', payload :  error})
