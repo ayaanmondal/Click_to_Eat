@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from '../actions/cartActions'
 
 export default function Cartscreen() {
   const cartstate = useSelector((state) => state.cartReducer);
   const cartItems = cartstate.cartItems;
-
+  const dispatch = useDispatch()
   return (
     <div>
       <div className="row justify-content-center">
@@ -27,12 +28,14 @@ export default function Cartscreen() {
                     className="fa fa-plus"
                     style={{ color: "green" }}
                     aria-hidden="true"
+                    onClick={()=>{dispatch(addToCart(item, item.quantity+1, item.varient))}}
                   ></i>
                   <b> {item.quantity} </b>
                   <i
                     className="fa fa-minus"
                     style={{ color: "red" }}
                     aria-hidden="true"
+                    onClick={()=>{dispatch(addToCart(item, item.quantity-1, item.varient))}}
                   ></i>
                   <hr />
                 </div>
