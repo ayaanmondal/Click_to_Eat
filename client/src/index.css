@@ -39,3 +39,6 @@ select{
   box-shadow: none !important;;
   border-color: black !important;
 }
+.fa-trash{
+  color: rgb(248, 93, 21) !important;
+}
