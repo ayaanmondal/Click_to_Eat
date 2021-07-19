@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
+import {useSelector, useDispatch} from 'react-redux';
+import { addToCart } from "../actions/cartActions";
+
 
 export default function Food({ food }) {
   const [quantity, setquantity] = useState(1);
@@ -10,6 +13,11 @@ export default function Food({ food }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const dispatch = useDispatch()
+
+  function addtocart(){
+    dispatch(addToCart(food, quantity, varient))
+  }
   return (
     <div>
       <div onClick={handleShow}>
@@ -61,7 +69,7 @@ export default function Food({ food }) {
         </div>
 
         <div className="m-1 w-100">
-          <button className="btn mt-3">Add To Cart</button>
+          <button className="btn mt-3" onClick={addtocart}>Add To Cart</button>
         </div>
       </div>
 
