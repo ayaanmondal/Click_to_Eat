@@ -3,9 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../actions/userAction";
 import { Link, Redirect } from 'react-router-dom';
 
+import Error from "../components/Error";
+import Loading from "../components/Loading";
+import Success from "../components/Success";
+
 export default function Loginscreen() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+
+  const loginstate = useSelector(state => state.loginUserReducer)
+  const {error, loading, success} = loginstate
 
   const dispatch = useDispatch();
 
@@ -28,6 +35,11 @@ export default function Loginscreen() {
       <div>
         <div className="row justify-content-center mt-5">
           <div className="col-md-5 mt-5">
+
+          {loading && (<Loading/>)}
+          {success && (<Success success='User Login Successfully'/>)}
+          {error && (<Error error='Login Fail !! Invalid Credentials'/>)}
+
             <h2 style={{ fontSize: "35px" }}>LOGIN</h2>
             <div>
               <input
@@ -50,9 +62,11 @@ export default function Loginscreen() {
                   setpassword(e.target.value);
                 }}
               ></input>
-              <button onClick={login} className="btn mt-3">
+              <button onClick={login} className="btn mt-3 mb-2">
                 SIGNIN
               </button>
+              <br></br>
+              <Link to="/register"style={{color:'blue',outline:'none',textDecoration: 'none'}} className="m-2">Register</Link>
             </div>
           </div>
         </div>
