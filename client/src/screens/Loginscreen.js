@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../actions/userAction";
+import { Link, Redirect } from 'react-router-dom';
 
 export default function Loginscreen() {
   const [email, setemail] = useState("");
@@ -8,9 +9,19 @@ export default function Loginscreen() {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+      
+    if(localStorage.getItem('currentUser')){
+
+        window.location.href='/'
+    }
+      
+  }, [])
+
   function login() {
     const user = { email, password };
     dispatch(loginUser(user));
+    
   }
   return (
     <div>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Link, Redirect } from 'react-router-dom';
 export const registerUser= (user) => async (dispatch) =>{
 
     dispatch({type: 'USER_REGISTER_REQUEST'})
@@ -19,7 +20,9 @@ export const loginUser= (user) => async (dispatch) =>{
     try {
         const response = await axios.post('/api/users/login', user)
         console.log(response)
-        dispatch({type: 'USER_LOGIN_SUCCESS'})
+        dispatch({type: 'USER_LOGIN_SUCCESS', payload: response.data});
+        localStorage.setItem('currentUser', JSON.stringify(response.data));
+        window.location.href='/'
     } catch(error) {
         dispatch({type:'USER_LOGIN_FAILED', payload: error })
     }

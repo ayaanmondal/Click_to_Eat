@@ -26,10 +26,16 @@ router.post("/login", async(req,res)=>{
 
         if(user.length > 0){
 
-            res.send('User logged in successfully')
+            const currentUser = {
+                name: user[0].name,
+                email: user[0].email,
+                isAdmin: user[0].isAdmin,
+                _id: user[0]._id
+            }
+            res.send(currentUser);
         }
         else{
-            
+
             return res.status(400).json({message: 'User Login Failed'});
         }
     } catch (error){

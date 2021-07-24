@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const cartstate = useSelector(state=>state.cartReducer)
+  const userstate = useSelector(state=>state.loginUserReducer)
+  const { currentUser } = userstate
   return (
     
     <div>
@@ -26,11 +28,24 @@ export default function Navbar() {
           </button>
           <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
+
+              {currentUser ? (
+                <div className="dropdown">
+                <a className="dropdown-toggle nav-link" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  {currentUser.name}
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a className="dropdown-item" href="#">Orders</a></li>
+                  <li><a className="dropdown-item" href="#">Logout</a></li>
+                </ul>
+              </div>
+              ) : (
+                <li className="nav-item">
                 <Link to="/login" className="nav-link" aria-current="page">
                   Login
                 </Link>
               </li>
+              )}
               <li className="nav-item">
                 <Link to="/cart" className="nav-link">
                   Cart ({cartstate.cartItems.length})
