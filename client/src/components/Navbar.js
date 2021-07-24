@@ -1,15 +1,18 @@
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux';
+import { Link } from 'react-router-dom';
+
 export default function Navbar() {
   const cartstate = useSelector(state=>state.cartReducer)
   return (
+    
     <div>
       <nav className="navbar navbar-expand-lg shadow-lg p-3 mb-5 bg-body rounded">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <Link to="/" className="navbar-brand">
            <img src="https://img.icons8.com/color/96/000000/food-cart.png" width="40" height="30"></img>
             Click to Eat
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -24,19 +27,20 @@ export default function Navbar() {
           <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="#">
+                <Link to="/login" className="nav-link" aria-current="page">
                   Login
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/cart">
+                <Link to="/cart" className="nav-link">
                   Cart ({cartstate.cartItems.length})
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
+    
   );
 }
