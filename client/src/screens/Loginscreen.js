@@ -7,6 +7,9 @@ import Error from "../components/Error";
 import Loading from "../components/Loading";
 import Success from "../components/Success";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Loginscreen() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -28,7 +31,15 @@ export default function Loginscreen() {
   function login() {
     const user = { email, password };
     dispatch(loginUser(user));
-    
+    toast.info('🔥🔥 Login Successfull !', {
+    position: "bottom-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+});
   }
   return (
     <div>
@@ -71,6 +82,7 @@ export default function Loginscreen() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

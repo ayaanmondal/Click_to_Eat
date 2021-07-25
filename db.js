@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 
 
-var mongoURL = 'mongodb+srv://ayan:ayan12345@cluster0.yxmmy.mongodb.net/mern-food';
+var mongoURL = 'MONGO_URI';
 
 mongoose.connect(mongoURL, {useUnifiedTopology:true, useNewUrlParser:true});
 

@@ -3,6 +3,8 @@ import { Modal } from "react-bootstrap";
 import {useSelector, useDispatch} from 'react-redux';
 import { addToCart } from "../actions/cartActions";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Food({ food }) {
   const [quantity, setquantity] = useState(1);
@@ -17,6 +19,15 @@ export default function Food({ food }) {
 
   function addtocart(){
     dispatch(addToCart(food, quantity, varient))
+    toast.dark("Item Added to Cart 🔥🔥", {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      })
   }
   return (
     <div>
@@ -95,6 +106,7 @@ export default function Food({ food }) {
           </button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer />
     </div>
   );
 }

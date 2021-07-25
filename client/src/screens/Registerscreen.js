@@ -6,6 +6,9 @@ import Error from "../components/Error";
 import Loading from "../components/Loading";
 import Success from "../components/Success";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Registerscreen() {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
@@ -35,6 +38,25 @@ export default function Registerscreen() {
         }
         console.log(user);
         dispatch(registerUser(user))
+        toast.success('🦄 Registration Successfull !', {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+
+        toast.info('Log in Now !', {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
     }
   }
 
@@ -86,6 +108,7 @@ export default function Registerscreen() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
