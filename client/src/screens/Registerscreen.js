@@ -16,10 +16,17 @@ export default function Registerscreen() {
 
   const dispatch = useDispatch()
   function register(){
-
-    if(password!=cpassword){
-        alert("Password not matched")
-    }
+    const emailregex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (name.length < 1) {
+    alert("Empty user name");
+  } else if (!emailregex.test(String(email).toLowerCase())) {
+    alert("Enter A Valid Mail");
+  } else if (password !== cpassword) {
+    alert("Passwords Not Matched");
+  } else if (password.length < 4) {
+    alert("Use a minimum password length of 4 characters or greater");
+  } 
     else{
         const user={
             name,
