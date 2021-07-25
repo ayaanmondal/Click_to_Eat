@@ -4,6 +4,7 @@ import { getAllfoods } from "../actions/foodActions";
 import Food from "../components/Food";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
+import Filter from "../components/Filter";
 //import foods from "../fooddata";
 export default function Homescreen() {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ export default function Homescreen() {
   }, []);
   return (
     <div>
+      <Filter/>
       <div className="row justify-content-center">
         {loading ? (
         <Loading/>
