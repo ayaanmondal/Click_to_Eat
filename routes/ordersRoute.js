@@ -34,7 +34,8 @@ router.post("/placeorder", async(req, res) => {
                 shippingAddress: {
                     street: token.card.address_line1,
                     city: token.card.address_city,
-                    country: token.card.address_zip
+                    country: token.card.address_country,
+                    pincode: token.card.address_zip
                 },
                 transactionId: payment.source.id
 
@@ -55,7 +56,7 @@ router.post("/placeorder", async(req, res) => {
 router.post("/getuserorders", async(req, res) => {
     const {userid} = req.body
     try {
-        const orders = await Order.find({userid : userid})
+        const orders = await Order.find({userid : userid}).sort({_id: -1})
         res.send(orders)
     } catch (error) {
         return res.status(400).json({message: 'Something Went Wrong' + error})
