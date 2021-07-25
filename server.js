@@ -9,9 +9,11 @@ app.use(express.json());
 
 const foodsRoute = require('./routes/foodsRoute')
 const userRoute = require('./routes/userRoute')
+const ordersRoute = require('./routes/ordersRoute')
 
 app.use('/api/foods/', foodsRoute)
 app.use('/api/users/', userRoute)
+app.use('/api/orders/', ordersRoute)
 
 app.get("/", (req, res) => {
   res.send("Server Started ");
