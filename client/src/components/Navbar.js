@@ -37,8 +37,8 @@ export default function Navbar() {
                   {currentUser.name}
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a className="dropdown-item" href="#">Orders</a></li>
-                  <li><a className="dropdown-item" href="#" onClick={()=>{dispatch(logoutUser())}}><li>Logout</li></a></li>
+                  <li><Link to="/orders" className="dropdown-item">Orders</Link></li>
+                  <li><a className="dropdown-item" onClick={()=>{dispatch(logoutUser())}}><li>Logout</li></a></li>
                 </ul>
               </div>
               ) : (
